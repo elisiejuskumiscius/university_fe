@@ -1,0 +1,30 @@
+<app-page-title>{{university?.code}} - {{university?.title}}</app-page-title>
+
+<div class="content">
+  <app-panel>
+    <h4 class="mat-h2">Number of study programs: {{ university?.studyPrograms?.length }}</h4>
+    <h4 class="mat-h2">Number of modules: {{ university?.modules?.length }}</h4>
+  </app-panel>
+
+  <app-panel [left]="studyProgramsTpl" [right]="modulesTpl">
+    <ng-template #studyProgramsTpl>
+      <app-list-header title="Study Programs"></app-list-header>
+      <app-list-item
+        *ngFor="let studyProgram of university?.studyPrograms"
+        [id]="studyProgram.id"
+        [selected]="selectedStudyProgramId"
+        [title]="studyProgram.title"
+        (removeItem)="removeStudyProgram($event)"
+        (selectItem)="selectStudyProgram($event)"
+      ></app-list-item>
+    </ng-template>
+
+    <ng-template #modulesTpl>
+      <app-list-header title="Modules"></app-list-header>
+      <app-list-item
+        *ngFor="let module of selectedStudyProgramModules"
+        [title]="module.title"
+      ></app-list-item>
+    </ng-template>
+  </app-panel>
+</div>

@@ -1,0 +1,13 @@
+<mat-card class="panel" [ngClass]="left ? 'panel-with-columns' : null">
+  <ng-container *ngIf="!left && !right">
+    <ng-content></ng-content>
+  </ng-container>
+
+  <div *ngIf="left" class="left">
+    <ng-container *ngTemplateOutlet="left"></ng-container>
+  </div>
+
+  <div *ngIf="right" class="right">
+    <ng-container *ngTemplateOutlet="right"></ng-container>
+  </div>
+</mat-card>

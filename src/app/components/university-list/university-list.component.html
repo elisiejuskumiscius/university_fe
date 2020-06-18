@@ -1,0 +1,53 @@
+<app-page-title>Universities</app-page-title>
+
+<table mat-table [dataSource]="universities" class="mat-elevation-z8">
+  <ng-container matColumnDef="position">
+    <th mat-header-cell *matHeaderCellDef>No.</th>
+    <td mat-cell *matCellDef="let index = index">{{index + 1}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="title">
+    <th mat-header-cell *matHeaderCellDef>Title</th>
+    <td mat-cell *matCellDef="let element">{{element.title}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="numberOfStudyPrograms">
+    <th mat-header-cell *matHeaderCellDef>Number of Study Programs</th>
+    <td mat-cell *matCellDef="let element">{{element.numberOfStudyProgrms || 0}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="numberOfModules">
+    <th mat-header-cell *matHeaderCellDef>Number of Modules</th>
+    <td mat-cell *matCellDef="let element">{{element.numberOfModules || 0}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef>
+      <button mat-mini-fab color="primary" aria-label="Add university icon" (click)="openDialog()">
+        <mat-icon>add</mat-icon>
+      </button>
+    </th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item [routerLink]="['/universities', element.id]">
+          <mat-icon>list_alt</mat-icon>
+          <span>View details</span>
+        </button>
+        <button mat-menu-item (click)="openDialog(element)">
+          <mat-icon>edit</mat-icon>
+          <span>Edit</span>
+        </button>
+        <button mat-menu-item (click)="delete(element.id)">
+          <mat-icon>delete</mat-icon>
+          <span>Delete</span>
+        </button>
+      </mat-menu>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

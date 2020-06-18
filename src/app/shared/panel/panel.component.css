@@ -1,0 +1,20 @@
+.panel {
+  margin-bottom: 25px;
+  width: 100%;
+}
+
+.panel-with-columns {
+  align-items: stretch;
+  display: flex;
+  width: 100%;
+}
+
+.left {
+  border-right: 1px solid lightgray;
+  min-width: 400px;
+}
+
+.right {
+  padding-left: 10px;
+  width: 100%;
+}

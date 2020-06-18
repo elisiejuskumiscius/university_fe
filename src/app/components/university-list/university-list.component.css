@@ -1,0 +1,21 @@
+table {
+  margin: auto;
+  max-width: 1024px;
+  width: 100%;
+}
+
+table th:first-child {
+  width: 50px;
+}
+
+table th:last-child, table tr td {
+  padding-right: 8px;
+}
+
+table th:last-child {
+  width: 10px;
+}
+
+.mat-row:hover {
+  background-color: lightgrey;
+}

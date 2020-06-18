@@ -1,0 +1,36 @@
+<h3 mat-dialog-title>University: {{ data.title }}</h3>
+
+<form [formGroup]="form" mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Code</mat-label>
+    <input
+      matInput
+      required
+      autocomplete="off"
+      formControlName="code"
+    />
+    <mat-error *ngIf="code.errors?.minlength">
+      At least 2 characters are required
+    </mat-error>
+    <mat-error *ngIf="code.errors?.required">
+      Code is required
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Title</mat-label>
+    <input
+      matInput
+      required
+      autocomplete="off"
+      formControlName="title"
+    />
+    <mat-error *ngIf="title.errors?.required">
+      Title is required
+    </mat-error>
+  </mat-form-field>
+</form>
+
+<div mat-dialog-actions>
+  <button mat-raised-button mat-button (click)="cancel()">Cancel</button>
+  <button mat-raised-button color="primary" [disabled]="form.invalid" (click)="save()">Save</button>
+</div>
